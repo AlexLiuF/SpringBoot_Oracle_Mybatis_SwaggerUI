@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tistory.nuridan.restapi.sample.mapper.SampleMapper">
+
+    <select id="select" parameterType="sampleVO" resultType="sampleVO">
+		SELECT
+			SAMPLE_ID AS sampleId
+	        , SAMPLE_NM AS sampleNm
+        FROM TB_SAMPLE_TEMP
+		WHERE SAMPLE_ID = #{sampleId}
+    </select>
+    
+    <insert id="insert" parameterType="sampleVO">
+		INSERT INTO TB_SAMPLE_TEMP
+		(
+			SAMPLE_ID
+	        , SAMPLE_NM
+		) VALUES (
+			#{sampleId}
+			, #{sampleNm}
+		)
+    </insert>    
+    
+    <update id="update" parameterType="sampleVO">
+		UPDATE TB_SAMPLE_TEMP
+		SET 
+			SAMPLE_NM = #{sampleNm}
+		WHERE SAMPLE_ID = #{sampleId}
+    </update>
+    
+    <delete id="delete" parameterType="sampleVO">
+		DELETE FROM TB_SAMPLE_TEMP
+		WHERE SAMPLE_ID = #{sampleId}
+    </delete>
+    
+</mapper>
+
